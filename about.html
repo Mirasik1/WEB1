@@ -1,62 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoDrive - About Us</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Team</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header id="main-header">
-        <h1>AutoDrive Dealership</h1>
-        <nav class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="cars.html">Cars</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+  <nav class="navbar">
+    <div class="brand-logo">NomadAUTO</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cars.html">Cars</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="active">About Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="hero-section" style="border-bottom: none; padding: 2rem 0 3rem 0;">
+      <h1>DESIGN & ENGINEERING</h1>
+      <p>Meet the minds behind the minimal Scandinavian web architecture.</p>
     </header>
 
-    <main>
-        <section class="about-section">
-            <h2>About Our Team</h2>
-            <p>We are a dedicated team of software engineering students creating modern web solutions for the automotive industry.</p>
-            
-            <!-- Участник 1: Miras -->
-            <article class="team-member">
-                <img src="images/miras.jpg" alt="Miras Photo" class="profile-img">
-                <h3>Miras</h3>
-                <p>Our background combines passion for web technologies, high-performance cars, and software design.</p>
-                
-                <h4>Our Key Focus Areas:</h4>
-                <ul>
-                    <li>Frontend Web Development</li>
-                    <li>Automotive Software & Telemetry</li>
-                    <li>UI/UX Design for Dealerships</li>
-                </ul>
-            </article>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">02</span>
+        <span class="stat-label">Developers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">05</span>
+        <span class="stat-label">HTML5 Pages</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Pure CSS3</span>
+      </div>
+    </div>
 
-            <!-- Участник 2: Bekarys -->
-            <article class="team-member">
-                <img src="images/bekarys.jpg" alt="Bekarys Photo" class="profile-img">
-                <h3>Bekarys</h3>
-                <p>Our background combines passion for web technologies, high-performance cars, and software design.</p>
-                
-                <h4>Our Key Focus Areas:</h4>
-                <ul>
-                    <li>Frontend Web Development</li>
-                    <li>Automotive Software & Telemetry</li>
-                    <li>UI/UX Design for Dealerships</li>
-                </ul>
-            </article>
-        </section>
-    </main>
+    <h2>About the Team Members</h2>
+    <div class="cards-grid">
+      
+      <div class="card member-card">
+        <img src="images/miras.jpg" alt="Miras Profile" class="profile-img">
+        <h3>Miras</h3>
+        <p class="role-title">Lead Front-End Developer</p>
+        <p>Architected semantic layout, page structure, and integrated site-wide navigation systems.</p>
+        <div class="tech-tags">
+          <span>HTML5</span>
+          <span>Architecture</span>
+          <span>Git</span>
+        </div>
+      </div>
 
-    <footer>
-        <p>Team Members: Miras, Bekarys</p>
-    </footer>
+      <div class="card member-card">
+        <img src="images/bekarys.jpg" alt="Bekarys Profile" class="profile-img">
+        <h3>Bekarys</h3>
+        <p class="role-title">CSS & UI Specialist</p>
+        <p>Crafted dark theme tokens, interactive forms, tables, and micro-animations.</p>
+        <div class="tech-tags">
+          <span>CSS3</span>
+          <span>UI Design</span>
+          <span>Layouts</span>
+        </div>
+      </div>
+
+    </div>
+
+    <section style="margin-top: 5rem;">
+      <h2>Development Workflow</h2>
+      <ol class="timeline-list">
+        <li>
+          <strong>01. Conceptualization</strong>
+          <p>Analyzed Polestar minimalist aesthetic, layout geometry, and typographic scale.</p>
+        </li>
+        <li>
+          <strong>02. Architecture</strong>
+          <p>Structured 5 fully validated semantic HTML5 documents according to project rules.</p>
+        </li>
+        <li>
+          <strong>03. Styling System</strong>
+          <p>Built a custom CSS design system using native variables, Flexbox, and responsive elements.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Team Members: Miras, Bekarys</p>
+    <p>&copy; 2026 WEB1 Team Project. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
