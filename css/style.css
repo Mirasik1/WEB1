@@ -1,0 +1,100 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+    color: #333333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #1a252f;
+}
+
+p {
+    font-size: 1rem;
+}
+
+
+#main-header {
+    background-color: #1a252f;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+#contact-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 20px 0;
+    border: 1px solid #cccccc;
+}
+
+.nav-menu {
+    margin-top: 10px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3498db;
+}
+
+.car-img, .service-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.nav-menu a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+main section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+}
