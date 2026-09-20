@@ -207,11 +207,19 @@ p {
   border: 1px solid var(--border-color);
 }
 
+<<<<<<< HEAD
+.nav-menu {
+    margin-top: 10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+=======
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   text-align: left;
+>>>>>>> 76223deb2d235fa8c489003e523f276df0df075e
 }
 
 .form-group label {
