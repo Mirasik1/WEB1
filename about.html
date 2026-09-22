@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Team</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <nav class="navbar">
@@ -19,49 +21,72 @@
     </div>
   </nav>
 
-  <main class="container">
-    <header class="hero-section" style="border-bottom: none; padding: 2rem 0 3rem 0;">
+  <div class="page-grid container">
+
+    <header class="grid-header">
       <h1>DESIGN & ENGINEERING</h1>
       <p>Meet the minds behind the minimal Scandinavian web architecture.</p>
     </header>
 
-    <main>
-        <section class="about-section">
-            <h2>About Our Team</h2>
-            <p>We are a dedicated team of software engineering students creating modern web solutions for the automotive industry.</p>
+    <aside class="grid-sidebar">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#miras">Miras Profile</a></li>
+        <li><a href="#bekarys">Bekarys Profile</a></li>
+      </ul>
+    </aside>
 
-            <article class="team-member">
-                <img src="images/miras.jpg" alt="Miras Photo" class="profile-img">
-                <h3>Miras</h3>
-                <p>Our background combines passion for web technologies, high-performance cars, and software design.</p>
-                
-                <h4>Our Key Focus Areas:</h4>
-                <ul>
-                    <li>Frontend Web Development</li>
-                    <li>Automotive Software & Telemetry</li>
-                    <li>UI/UX Design for Dealerships</li>
-                </ul>
-            </article>
+    <main class="grid-main">
+      <section id="about-sec">
+        <h2>About Our Team</h2>
+        <p>We are a dedicated team of software engineering students creating modern web solutions for the automotive
+          industry.</p>
 
-            <article class="team-member">
-                <img src="images/bekarys.jpg" alt="Bekarys Photo" class="profile-img">
-                <h3>Bekarys</h3>
-                <p>Our background combines passion for web technologies, high-performance cars, and software design.</p>
-                
-                <h4>Our Key Focus Areas:</h4>
-                <ul>
-                    <li>Frontend Web Development</li>
-                    <li>Automotive Software & Telemetry</li>
-                    <li>UI/UX Design for Dealerships</li>
-                </ul>
-            </article>
+        <section class="cards-container" style="padding: 2rem 0 0 0;">
+          <article class="card" id="miras">
+            <div class="card-content">
+              <img src="images/miras.jpg" alt="Miras Photo" class="profile-img">
+              <h3 class="card-title">Miras</h3>
+              <p class="card-text">Our background combines passion for web technologies, high-performance cars, and
+                software design.</p>
+
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; text-align: center; color: var(--text-primary);">Key
+                Focus Areas:</h4>
+              <ul style="margin-left: 1rem; color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6;">
+                <li>Frontend Web Development</li>
+                <li>Automotive Software & Telemetry</li>
+                <li>UI/UX Design for Dealerships</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card" id="bekarys">
+            <div class="card-content">
+              <img src="images/bekarys.jpg" alt="Bekarys Photo" class="profile-img">
+              <h3 class="card-title">Bekarys</h3>
+              <p class="card-text">Our background combines passion for web technologies, high-performance cars, and
+                software design.</p>
+
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; text-align: center; color: var(--text-primary);">Key
+                Focus Areas:</h4>
+              <ul style="margin-left: 1rem; color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6;">
+                <li>Frontend Web Development</li>
+                <li>Automotive Software & Telemetry</li>
+                <li>UI/UX Design for Dealerships</li>
+              </ul>
+            </div>
+          </article>
         </section>
+      </section>
     </main>
 
-  <footer>
-    <p>Team Members: Miras, Bekarys</p>
-    <p>&copy; 2026 WEB1 Team Project. All rights reserved.</p>
-  </footer>
+    <footer class="grid-footer">
+      <p>Team Members: Miras, Bekarys</p>
+      <p>&copy; 2026 WEB1 Team Project. All rights reserved.</p>
+    </footer>
+
+  </div>
 
 </body>
+
 </html>

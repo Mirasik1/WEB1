@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <nav class="navbar">
@@ -19,44 +21,61 @@
     </div>
   </nav>
 
-  <main class="container" style="text-align: center;">
-    <h2>Contact Us</h2>
-    <p>Have questions about our vehicle models or services? Send us a message.</p>
+  <div class="page-grid container">
 
-    
-    <form id="contact-form">
-      <div class="form-group">
-        <label for="username">Full Name</label>
-        <input type="text" id="username" name="username" placeholder="Enter your full name" required>
-      </div>
+    <header class="grid-header">
+      <h1>GET IN TOUCH</h1>
+      <p>Have questions about our vehicle models or services? Send us a message.</p>
+    </header>
 
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="name@example.com" required>
-      </div>
+    <aside class="grid-sidebar">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#contact-form">Inquiry Form</a></li>
+        <li><a href="#contact-info">Working Hours</a></li>
+      </ul>
+    </aside>
 
-      <div class="form-group">
-        <label for="model-choice">Model of Interest</label>
-        <select id="model-choice" name="model">
-          <option value="rs6">Polestar RS Fastback</option>
-          <option value="m4">Polestar M Coupe</option>
-          <option value="911">Polestar 911 Edition</option>
-        </select>
-      </div>
+    <main class="grid-main">
+      <h2>Contact Us</h2>
+      <p>Have questions about our vehicle models or services? Send us a message.</p>
 
-      <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Write your inquiry here..." required></textarea>
-      </div>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="username">Full Name</label>
+          <input type="text" id="username" name="username" placeholder="Enter your full name" required>
+        </div>
 
-      <button type="submit" class="btn-submit">Submit Inquiry</button>
-    </form>
-  </main>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" required>
+        </div>
 
-  <footer>
-    <p>Team Members: Miras, Bekarys</p>
-    <p>&copy; 2026 WEB1 Team Project. All rights reserved.</p>
-  </footer>
+        <div class="form-group">
+          <label for="model-choice">Model of Interest</label>
+          <select id="model-choice" name="model">
+            <option value="rs6">Polestar RS Fastback</option>
+            <option value="m4">Polestar M Coupe</option>
+            <option value="911">Polestar 911 Edition</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your inquiry here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Inquiry</button>
+      </form>
+    </main>
+
+    <footer class="grid-footer">
+      <p>Team Members: Miras, Bekarys</p>
+      <p>&copy; 2026 WEB1 Team Project. All rights reserved.</p>
+    </footer>
+
+  </div>
 
 </body>
+
 </html>
