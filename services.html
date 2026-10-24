@@ -70,6 +70,54 @@
           </tr>
         </tbody>
       </table>
+      <button id="open-popup-btn" class="btn-submit" style="margin-top: 1rem;">Book a Consultation</button>
+
+      <div id="popup-modal" class="popup-overlay">
+        <div class="popup-content">
+          <span id="close-popup-btn" class="close-popup">&times;</span>
+          <h2>Book a Consultation</h2>
+          <form id="popup-form">
+            <div class="form-group">
+              <label for="popup-name">Your Name</label>
+              <input type="text" id="popup-name" required>
+            </div>
+            <div class="form-group">
+              <label for="popup-phone">Phone Number</label>
+              <input type="tel" id="popup-phone" required>
+            </div>
+            <button type="submit" class="btn-submit" style="margin-top: 1rem;">Submit Request</button>
+          </form>
+        </div>
+      </div>
+      <section class="faq-section" style="margin-top: 2rem;">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">What services are included in the RS Package?</button>
+            <div class="accordion-content">
+              <p>The RS Package includes full engine diagnostics, twin-turbo calibration, and high-performance brake
+                fluid replacement.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">How long does a full track inspection take?</button>
+            <div class="accordion-content">
+              <p>A standard track preparation and telemetry analysis usually takes between 2 to 4 hours depending on the
+                vehicle model.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">Do you provide warranty for performance tuning?</button>
+            <div class="accordion-content">
+              <p>Yes, all custom ECU remapping and hardware installation services come with a 12-month operational
+                warranty.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="grid-footer">
@@ -78,7 +126,7 @@
     </footer>
 
   </div>
-
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>
