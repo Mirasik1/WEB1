@@ -40,27 +40,13 @@
       <h2>Contact Us</h2>
       <p>Have questions about our vehicle models or services? Send us a message.</p>
 
-      <form id="contact-form" novalidate>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="name@example.com">
-          <span class="error-msg" id="email-error"></span>
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="At least 8 characters">
-          <span class="error-msg" id="password-error"></span>
-        </div>
-
-        <div class="form-group">
-          <label for="confirm-password">Confirm Password</label>
-          <input type="password" id="confirm-password" name="confirm-password" placeholder="Repeat your password">
-          <span class="error-msg" id="confirm-error"></span>
-        </div>
-
-        <button type="submit" class="btn-submit">Submit Form</button>
-        <div id="form-success" class="success-msg"></div>
+      <form id="contact-form" action="https://jsonplaceholder.typicode.com/posts" method="post">
+        <p>Demo form: sends test data to JSONPlaceholder. Messages are not saved or delivered to our team. Use sample details only.</p>
+        <div class="form-group"><label for="name">Name</label><input id="name" name="name" required maxlength="100" autocomplete="name"></div>
+        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required autocomplete="email" placeholder="name@example.com"></div>
+        <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required maxlength="2000"></textarea></div>
+        <button type="submit" class="btn-submit">Send demo message</button>
+        <div id="form-success" class="success-msg" role="status" aria-live="polite"></div>
       </form>
     </main>
 

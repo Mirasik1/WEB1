@@ -63,70 +63,38 @@ accordionHeaders.forEach(header => {
 
 const contactForm = document.getElementById('contact-form');
 
+async function submitContact(data, callback) {
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) throw new Error('Request failed');
+    await response.json();
+  } catch (error) { callback(error); return; }
+  callback(null);
+}
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const confirmInput = document.getElementById('confirm-password');
-
-    const emailError = document.getElementById('email-error');
-    const passwordError = document.getElementById('password-error');
-    const confirmError = document.getElementById('confirm-error');
-    const successMsg = document.getElementById('form-success');
-
-
-    emailError.textContent = '';
-    passwordError.textContent = '';
-    confirmError.textContent = '';
-    successMsg.textContent = '';
-
-    emailInput.classList.remove('input-error');
-    passwordInput.classList.remove('input-error');
-    confirmInput.classList.remove('input-error');
-
-    let isValid = true;
-
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailInput.value.trim()) {
-      emailError.textContent = 'Email is required.';
-      emailInput.classList.add('input-error');
-      isValid = false;
-    } else if (!emailRegex.test(emailInput.value.trim())) {
-      emailError.textContent = 'Please enter a valid email address.';
-      emailInput.classList.add('input-error');
-      isValid = false;
+  contactForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const button = contactForm.querySelector('button[type="submit"]');
+    if (button.disabled || !contactForm.reportValidity()) return;
+    const status = document.getElementById('form-success');
+    const data = Object.fromEntries(new FormData(contactForm));
+    if (!data.name.trim() || !data.message.trim()) {
+      status.style.color = '#ff8585';
+      status.textContent = 'Please enter your name and message, not just spaces.';
+      return;
     }
-
-
-    if (!passwordInput.value) {
-      passwordError.textContent = 'Password is required.';
-      passwordInput.classList.add('input-error');
-      isValid = false;
-    } else if (passwordInput.value.length < 8) {
-      passwordError.textContent = 'Password must be at least 8 characters long.';
-      passwordInput.classList.add('input-error');
-      isValid = false;
-    }
-
-    if (!confirmInput.value) {
-      confirmError.textContent = 'Please confirm your password.';
-      confirmInput.classList.add('input-error');
-      isValid = false;
-    } else if (passwordInput.value !== confirmInput.value) {
-      confirmError.textContent = 'Passwords do not match.';
-      confirmInput.classList.add('input-error');
-      isValid = false;
-    }
-
-
-    if (isValid) {
-      successMsg.textContent = 'Form submitted successfully!';
-      contactForm.reset();
-    }
+    button.disabled = true;
+    status.textContent = 'Sending…';
+    status.style.color = 'var(--text-secondary)';
+    submitContact(data, error => {
+      button.disabled = false;
+      status.style.color = error ? '#ff8585' : '#00e676';
+      status.textContent = error ? 'Could not send. Please try again.' : 'Demo submitted successfully! No message was delivered to NomadAUTO.';
+      if (!error) contactForm.reset();
+    });
   });
 }
 
@@ -256,4 +224,62 @@ window.addEventListener('hashchange', () => {
   if (window.location.hash === '#gallery-modal') {
     renderGalleryItems(carInventory);
   }
+});
+// Arrow keys move focus within the navigation menu, wrapping at the ends.
+document.querySelectorAll('.nav-links').forEach(menu => {
+  const links = Array.from(menu.querySelectorAll('a'));
+  menu.addEventListener('keydown', event => {
+    const current = links.indexOf(document.activeElement);
+    if (current === -1) return;
+    let next;
+    switch (event.key) {
+      case 'ArrowRight': case 'ArrowDown': next = (current + 1) % links.length; break;
+      case 'ArrowLeft': case 'ArrowUp': next = (current - 1 + links.length) % links.length; break;
+      case 'Home': next = 0; break;
+      case 'End': next = links.length - 1; break;
+      default: return;
+    }
+    event.preventDefault();
+    links[next].focus();
+  });
+});
+document.querySelectorAll('.read-more').forEach(button => {
+  button.addEventListener('click', () => {
+    const content = document.getElementById(button.getAttribute('aria-controls'));
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    content.style.display = expanded ? 'none' : 'block';
+    button.setAttribute('aria-expanded', String(!expanded));
+    button.textContent = expanded ? 'Read More' : 'Read Less';
+  });
+});
+document.querySelectorAll('.rating').forEach(rating => {
+  const stars = rating.querySelectorAll('.rating-star');
+  stars.forEach(star => star.addEventListener('click', () => {
+    const value = Number(star.dataset.value);
+    stars.forEach(button => {
+      button.style.color = Number(button.dataset.value) <= value ? '#ffbf47' : '#8e8e93';
+      button.setAttribute('aria-pressed', String(button === star));
+    });
+    rating.querySelector('.rating-status').textContent = `Your rating: ${value} / 5`;
+  }));
+});
+const timeButton = document.getElementById('show-time-btn');
+if (timeButton) timeButton.addEventListener('click', () => {
+  document.getElementById('clicked-time').textContent = new Date().toLocaleTimeString();
+});
+const categoryFilter = document.getElementById('category-filter');
+if (categoryFilter) categoryFilter.addEventListener('change', () => {
+  let category;
+  switch (categoryFilter.value) {
+    case 'sports': category = 'sports'; break;
+    case 'wagon': category = 'wagon'; break;
+    default: category = 'all';
+  }
+  let count = 0;
+  document.querySelectorAll('#featured-models .card').forEach(card => {
+    const visible = category === 'all' || card.dataset.category === category;
+    card.style.display = visible ? 'flex' : 'none';
+    if (visible) count++;
+  });
+  document.getElementById('filter-status').textContent = `${count} models shown`;
 });

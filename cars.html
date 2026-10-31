@@ -32,43 +32,54 @@
       <h3>Quick Links</h3>
       <ul>
         <li><a href="#featured-cars">Featured Cars</a></li>
-        <li><a href="#price-list">Price List Table</a></li>
+
         <li><a href="#gallery-modal">Car Gallery</a></li>
       </ul>
     </aside>
 
     <main class="grid-main">
-      <h2 id="featured">Featured Models</h2>
-      <section class="cards-container">
-        <article class="card">
+      <h2 id="featured-cars">Featured Models</h2>
+      <div class="form-group">
+        <label for="category-filter">Filter by category</label>
+        <select id="category-filter"><option value="all">All models</option><option value="sports">Sports cars</option><option value="wagon">Wagons</option></select>
+        <p id="filter-status" role="status">3 models shown</p>
+      </div>
+      <section class="cards-container" id="featured-models">
+        <article class="card" data-category="sports">
           <img src="images/porsche-911.webp" alt="Porsche 911 Carrera" class="card-img">
           <div class="card-content">
             <h3 class="card-title">Porsche 911 Carrera</h3>
             <p class="card-text">There is no substitute...</p>
-            <a href="#" class="card-button">Подробнее</a>
+            <p id="car-details-1" class="car-details" style="display: none;">2023 model · Starting at $114,000.</p>
+            <button type="button" class="card-button read-more" aria-expanded="false" aria-controls="car-details-1">Read More</button>
+            <div class="rating" role="group" aria-label="Rate this model"><button type="button" class="rating-star" data-value="1" aria-label="Rate 1 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="2" aria-label="Rate 2 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="3" aria-label="Rate 3 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="4" aria-label="Rate 4 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="5" aria-label="Rate 5 out of 5" aria-pressed="false">★</button><p class="rating-status" role="status">Choose your rating</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-category="sports">
           <img src="images/bmw-m4.webp" alt="BMW M4" class="card-img">
           <div class="card-content">
             <h3 class="card-title">BMW M4 Competition</h3>
             <p class="card-text">Sheer Driving Pleasure</p>
-            <a href="#" class="card-button">Подробнее</a>
+            <p id="car-details-2" class="car-details" style="display: none;">2024 model · Starting at $79,100.</p>
+            <button type="button" class="card-button read-more" aria-expanded="false" aria-controls="car-details-2">Read More</button>
+            <div class="rating" role="group" aria-label="Rate this model"><button type="button" class="rating-star" data-value="1" aria-label="Rate 1 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="2" aria-label="Rate 2 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="3" aria-label="Rate 3 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="4" aria-label="Rate 4 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="5" aria-label="Rate 5 out of 5" aria-pressed="false">★</button><p class="rating-status" role="status">Choose your rating</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-category="wagon">
           <img src="images/audi-rs6.webp" alt="Audi RS6" class="card-img">
           <div class="card-content">
             <h3 class="card-title">Audi RS6 Avant</h3>
             <p class="card-text">The ultimate family wagon with supercar performance</p>
-            <a href="#" class="card-button">Подробнее</a>
+            <p id="car-details-3" class="car-details" style="display: none;">2024 model · Starting at $125,900.</p>
+            <button type="button" class="card-button read-more" aria-expanded="false" aria-controls="car-details-3">Read More</button>
+            <div class="rating" role="group" aria-label="Rate this model"><button type="button" class="rating-star" data-value="1" aria-label="Rate 1 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="2" aria-label="Rate 2 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="3" aria-label="Rate 3 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="4" aria-label="Rate 4 out of 5" aria-pressed="false">★</button><button type="button" class="rating-star" data-value="5" aria-label="Rate 5 out of 5" aria-pressed="false">★</button><p class="rating-status" role="status">Choose your rating</p></div>
           </div>
         </article>
       </section>
 
-      
+
     </main>
 
     <footer class="grid-footer">
@@ -83,7 +94,7 @@
       <h2>Car Gallery</h2>
 
       <div class="gallery-container">
-        
+
       </div>
 
     </div>

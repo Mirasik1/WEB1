@@ -642,3 +642,20 @@ input, textarea, select {
 .close-popup:hover {
   color: var(--accent-color);
 }
+
+.rating { padding: 1rem; text-align: center; }
+.rating-star { background: transparent; border: 0; color: #8e8e93; font-size: 1.8rem; padding: .2rem; }
+.rating-status { margin: .5rem 0 0; }
+.car-details { text-align: center; padding: 0 1rem; }
+button, select, textarea { font: inherit; }
+button:disabled { opacity: .6; cursor: wait; }
+:focus-visible { outline: 2px solid #ffbf47; outline-offset: 4px; }
+.form-group input:focus, .form-group textarea:focus { outline: 2px solid #ffbf47; }
+@media (max-width: 760px) {
+  .navbar { padding: 1rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-links { flex-wrap: wrap; gap: 1rem; }
+  .page-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "header" "sidebar" "main" "footer"; }
+  .container, .grid-main, #contact-form { padding: 1rem; }
+  .cards-container { padding: 1rem 0; }
+  .gallery-container { grid-template-columns: 1fr; }
+}

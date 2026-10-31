@@ -24,7 +24,7 @@
 
   <div class="page-grid container">
 
-    <header class="grid-header">
+    <header class="grid-header" id="hero">
       <h1>PURE PERFORMANCE</h1>
       <p>Minimalist aesthetic combined with high-performance engineering.</p>
       <img class="hero-img" src="images/porsche-911.webp" alt="NomadAUTO Featured Vehicle">
@@ -41,7 +41,7 @@
     </aside>
 
     <main class="grid-main">
-      <h2>Design Principles</h2>
+      <h2 id="principles">Design Principles</h2>
       <ul>
         <li>Pure, uncompromised Scandinavian design architecture.</li>
         <li>Focus on high-performance driving dynamics.</li>
@@ -52,6 +52,8 @@
     <footer class="grid-footer">
       <p>Team Members: Miras, Bekarys</p>
       <p>&copy; 2026 WEB1 Team Project. All rights reserved.</p>
+      <button type="button" id="show-time-btn" class="btn-submit">Show current time</button>
+      <p id="clicked-time" role="status">Click to check your local time.</p>
       <div class="datetime-block">
         <span id="current-datetime">Loading date and time...</span>
       </div>
