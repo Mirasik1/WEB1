@@ -1,64 +1,92 @@
 function updateDateTime() {
-    const dateTimeElement = document.getElementById('current-datetime');
-    if (!dateTimeElement) return;
+  const dateTimeElement = document.getElementById('current-datetime');
+  if (!dateTimeElement) return;
 
-    const now = new Date();
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-    };
+  const now = new Date();
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  };
 
-    dateTimeElement.textContent = now.toLocaleString('en-US', options);
+  dateTimeElement.textContent = now.toLocaleString('en-US', options);
 }
 
 setInterval(updateDateTime, 1000);
 updateDateTime();
+const themeToggle = document.getElementById('theme-toggle');
+let savedTheme = null;
+try {
+  savedTheme = localStorage.getItem('nomadauto-theme');
+} catch (error) {
+  // Theme switching still works when browser storage is unavailable.
+}
+document.documentElement.classList.toggle('light-theme', savedTheme === 'light');
+
+function updateThemeButton() {
+  if (!themeToggle) return;
+  const isLight = document.documentElement.classList.contains('light-theme');
+  themeToggle.textContent = isLight ? 'Night mode' : 'Day mode';
+  themeToggle.setAttribute('aria-pressed', String(isLight));
+}
+
+updateThemeButton();
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.documentElement.classList.toggle('light-theme');
+    try {
+      localStorage.setItem('nomadauto-theme', isLight ? 'light' : 'dark');
+    } catch (error) {
+      // Storage is optional; the current page can still change theme.
+    }
+    updateThemeButton();
+  });
+}
 const bgBtn = document.getElementById('bg-change-btn');
 
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 if (bgBtn) {
-    bgBtn.addEventListener('click', () => {
-        const randomColor = getRandomColor();
-        document.body.style.backgroundColor = randomColor;
-    });
+  bgBtn.addEventListener('click', () => {
+    const randomColor = getRandomColor();
+    document.body.style.backgroundColor = randomColor;
+  });
 }
 
 
 const accordionHeaders = document.querySelectorAll('.accordion-header');
 
 accordionHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-        const accordionItem = header.parentElement;
-        const accordionContent = accordionItem.querySelector('.accordion-content');
-        const isActive = header.classList.contains('active');
+  header.addEventListener('click', () => {
+    const accordionItem = header.parentElement;
+    const accordionContent = accordionItem.querySelector('.accordion-content');
+    const isActive = header.classList.contains('active');
 
-       
-        document.querySelectorAll('.accordion-header').forEach(h => {
-            h.classList.remove('active');
-            h.nextElementSibling.style.maxHeight = null;
-            h.nextElementSibling.style.padding = '0 1.2rem';
-        });
 
-        
-        if (!isActive) {
-            header.classList.add('active');
-            accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
-            accordionContent.style.padding = '0.8rem 1.2rem';
-        }
+    document.querySelectorAll('.accordion-header').forEach(h => {
+      h.classList.remove('active');
+      h.nextElementSibling.style.maxHeight = null;
+      h.nextElementSibling.style.padding = '0 1.2rem';
     });
+
+
+    if (!isActive) {
+      header.classList.add('active');
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+      accordionContent.style.padding = '0.8rem 1.2rem';
+    }
+  });
 });
 
 const contactForm = document.getElementById('contact-form');
