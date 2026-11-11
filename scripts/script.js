@@ -241,15 +241,6 @@ function attachGalleryEvents() {
       }
     });
 
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      playRandomMp3Sound();
-
-      item.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        item.style.transform = 'scale(1)';
-      }, 150);
-    });
   });
 }
 

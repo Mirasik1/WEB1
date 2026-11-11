@@ -1,5 +1,52 @@
 
 $(function () {
+  /* Task 7: gallery sound notification */
+  const $toast = $('<div class="action-toast" role="status" aria-live="polite"></div>').hide().appendTo('body');
+
+  $('.gallery-container').on('click', '.gallery-item', function (event) {
+    event.stopPropagation();
+    playRandomMp3Sound();
+    $(this).stop(true).animate({ opacity: 0.65 }, 120).animate({ opacity: 1 }, 120);
+    $toast.stop(true, true).text('Sound played!').fadeIn(200).delay(1800).fadeOut(500);
+  });
+
+  /* Task 8: copy FAQ answers with a confirmation tooltip */
+  $('.faq-copy').on('click', async function () {
+    const $button = $(this);
+    const text = $button.siblings('p').text().trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      $button.trigger('copy');
+    } catch (error) {
+      $button.attr('data-tooltip', 'Copy failed').addClass('show-tooltip');
+      setTimeout(() => $button.removeClass('show-tooltip'), 2000);
+    }
+  });
+
+  $('.faq-copy').on('copy', function () {
+    const $button = $(this);
+    clearTimeout($button.data('resetTimer'));
+    $button.find('span').text('✓');
+    $button.attr('data-tooltip', 'Copied to clipboard!').addClass('show-tooltip');
+    $button.data('resetTimer', setTimeout(() => {
+      $button.find('span').text('⧉');
+      $button.removeClass('show-tooltip');
+    }, 2000));
+  });
+
+  /* Task 9: load the hero image when it approaches the viewport */
+  function loadVisibleImages() {
+    const viewportBottom = $(window).scrollTop() + $(window).height() + 150;
+    $('.lazy-image[data-src]').each(function () {
+      const $image = $(this);
+      if ($image.offset().top <= viewportBottom) {
+        $image.attr('src', $image.attr('data-src')).removeAttr('data-src');
+      }
+    });
+  }
+  $(window).on('scroll resize', loadVisibleImages);
+  loadVisibleImages();
+
   /*Task 4: scroll progress*/
   const $bar = $(
     '<div class="scroll-progress is-idle" role="progressbar" aria-label="Page scroll progress" ' +

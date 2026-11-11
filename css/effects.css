@@ -1,4 +1,21 @@
 /*scroll progress bar + percentage ring*/
+.action-toast {
+  position: fixed; top: 1.5rem; right: 1.5rem; z-index: 10000;
+  padding: .85rem 1.3rem; border-radius: 10px;
+  background: var(--accent-color); color: #111; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+.faq-copy {
+  position: relative; margin: .4rem 0 1rem; padding: .4rem .8rem;
+  border: 1px solid var(--accent-color); border-radius: 6px;
+  background: var(--card-bg); color: var(--text-primary); cursor: pointer;
+}
+.faq-copy:hover { border-color: var(--text-primary); }
+.faq-copy.show-tooltip::after {
+  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 0;
+  white-space: nowrap; padding: .35rem .6rem; border-radius: 5px;
+  background: var(--accent-color); color: #111; font-size: .8rem;
+}
 .scroll-progress {
   --p: 0;
   --hue: 20;
