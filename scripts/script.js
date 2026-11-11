@@ -91,47 +91,31 @@ accordionHeaders.forEach(header => {
 
 const contactForm = document.getElementById('contact-form');
 
-async function submitContact(data, callback) {
-  try {
-    const response = await fetch(contactForm.action, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (!response.ok) throw new Error('Request failed');
-    await response.json();
-  } catch (error) { callback(error); return; }
-  callback(null);
-}
 if (contactForm) {
   contactForm.addEventListener('submit', event => {
     event.preventDefault();
     const button = contactForm.querySelector('button[type="submit"]');
     if (button.disabled || !contactForm.reportValidity()) return;
     const status = document.getElementById('form-success');
-    const data = Object.fromEntries(new FormData(contactForm));
-    if (!data.name.trim() || !data.message.trim()) {
+    if (!contactForm.elements.name.value.trim() || !contactForm.elements.message.value.trim()) {
       status.style.color = '#ff8585';
       status.textContent = 'Please enter your name and message, not just spaces.';
       return;
     }
     const originalLabel = button.textContent;
-    const startedAt = Date.now();
     button.disabled = true;                       
     button.setAttribute('aria-busy', 'true');
     button.innerHTML = '<span class="spinner" aria-hidden="true"></span><span>Please wait…</span>';
     status.textContent = 'Sending…';
     status.style.color = 'var(--text-secondary)';
-    submitContact(data, error => {
-      const remaining = Math.max(0, 1500 - (Date.now() - startedAt));
-      setTimeout(() => {
-        button.disabled = false;
-        button.removeAttribute('aria-busy');
-        button.textContent = originalLabel;       
-        status.style.color = error ? '#ff8585' : '#00e676';
-        status.textContent = error ? 'Could not send. Please try again.' : 'Demo submitted successfully! No message was delivered to NomadAUTO.';
-        if (!error) contactForm.reset();
-      }, remaining);
-    });
+    setTimeout(() => {
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+      button.textContent = originalLabel;
+      status.style.color = '#00e676';
+      status.textContent = 'Demo submitted successfully! No message was delivered to NomadAUTO.';
+      contactForm.reset();
+    }, 1500);
   });
 }
 
