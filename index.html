@@ -7,6 +7,9 @@
   <title>Home</title>
   <script src="scripts/theme-init.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
 
 <body>
@@ -42,13 +45,53 @@
       </ul>
     </aside>
 
-    <main class="grid-main">
-      <h2 id="principles">Design Principles</h2>
-      <ul>
-        <li>Pure, uncompromised Scandinavian design architecture.</li>
-        <li>Focus on high-performance driving dynamics.</li>
-        <li>Minimalist aesthetics with maximum functional precision.</li>
-      </ul>
+       <main class="grid-main">
+      <div class="search-wrap" role="search">
+        <label for="site-search" class="visually-hidden">Search this page</label>
+        <input type="search" id="site-search" placeholder="Search principles and FAQ…" autocomplete="off"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions">
+        <ul id="suggestions" class="suggestions" role="listbox" hidden></ul>
+      </div>
+      <p id="search-status" class="search-status" aria-live="polite"></p>
+
+      <div id="search-scope">
+        <h2 id="principles">Design Principles</h2>
+        <ul>
+          <li class="searchable">Pure, uncompromised Scandinavian design architecture.</li>
+          <li class="searchable">Focus on high-performance driving dynamics.</li>
+          <li class="searchable">Minimalist aesthetics with maximum functional precision.</li>
+        </ul>
+
+        <h2>FAQ</h2>
+        <ul class="faq-list">
+          <li class="faq-item searchable">
+            <h3>What does NomadAUTO offer?</h3>
+            <p>A catalogue of sports cars and wagons, plus services for dealerships and buyers.</p>
+          </li>
+          <li class="faq-item searchable">
+            <h3>Which car brands are available?</h3>
+            <p>Porsche, BMW and Audi models, from the 911 and M4 to the RS6 Avant.</p>
+          </li>
+          <li class="faq-item searchable">
+            <h3>Who built this website?</h3>
+            <p>Miras and Bekarys, two software engineering students, as part of the WEB1 team project.</p>
+          </li>
+          <li class="faq-item searchable">
+            <h3>How can I contact the team?</h3>
+            <p>Use the contact page to send a message to Miras or Bekarys.</p>
+          </li>
+        </ul>
+      </div>
+
+      <section class="stats" id="stats" aria-labelledby="stats-title">
+        <h2 id="stats-title">NomadAUTO in numbers</h2>
+        <div class="stats-grid">
+          <div class="stat"><span class="stat-number" data-target="1000" data-suffix="+">1000+</span><span class="stat-label">Happy customers</span></div>
+          <div class="stat"><span class="stat-number" data-target="9">3</span><span class="stat-label">Models in catalog</span></div>
+          <div class="stat"><span class="stat-number" data-target="3">3</span><span class="stat-label">Premium brands</span></div>
+          <div class="stat"><span class="stat-number" data-target="98" data-suffix="%">99%</span><span class="stat-label">Satisfaction rate</span></div>
+        </div>
+      </section>
     </main>
 
     <footer class="grid-footer">
@@ -63,6 +106,8 @@
 
   </div>
   <script src="scripts/script.js"></script>
+  <script src="scripts/search.js"></script>
+  <script src="scripts/effects.js"></script>
 </body>
 
 </html>

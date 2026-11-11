@@ -114,14 +114,23 @@ if (contactForm) {
       status.textContent = 'Please enter your name and message, not just spaces.';
       return;
     }
-    button.disabled = true;
+    const originalLabel = button.textContent;
+    const startedAt = Date.now();
+    button.disabled = true;                       
+    button.setAttribute('aria-busy', 'true');
+    button.innerHTML = '<span class="spinner" aria-hidden="true"></span><span>Please wait…</span>';
     status.textContent = 'Sending…';
     status.style.color = 'var(--text-secondary)';
     submitContact(data, error => {
-      button.disabled = false;
-      status.style.color = error ? '#ff8585' : '#00e676';
-      status.textContent = error ? 'Could not send. Please try again.' : 'Demo submitted successfully! No message was delivered to NomadAUTO.';
-      if (!error) contactForm.reset();
+      const remaining = Math.max(0, 1500 - (Date.now() - startedAt));
+      setTimeout(() => {
+        button.disabled = false;
+        button.removeAttribute('aria-busy');
+        button.textContent = originalLabel;       
+        status.style.color = error ? '#ff8585' : '#00e676';
+        status.textContent = error ? 'Could not send. Please try again.' : 'Demo submitted successfully! No message was delivered to NomadAUTO.';
+        if (!error) contactForm.reset();
+      }, remaining);
     });
   });
 }
@@ -311,3 +320,45 @@ if (categoryFilter) categoryFilter.addEventListener('change', () => {
   });
   document.getElementById('filter-status').textContent = `${count} models shown`;
 });
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function(){
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function(){
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+
+let people_data = [
+  {
+    firstName:"Ahlelele",
+    lastName:"Ahlelas",
+  },
+  {
+    firstName:"Conor",
+    lastName:"MCChicken",
+  },
+  {
+    firstName:"Barack",
+    lastName:"Obama",
+  },
+  {
+    firstName:"Miras",
+    lastName:"NeSigma",
+  },
+  {
+    firstName:"Islam",
+    lastName:"Mentalist"
+  }
+];
+
+function searchPeopleData(searchString) {
+  return people_data.filter((person) => {
+    return person.firstName.includes(searchString);
+  });
+}
+
+console.log(searchPeopleData("Tony"))
