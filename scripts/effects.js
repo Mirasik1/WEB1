@@ -1,6 +1,6 @@
 
 $(function () {
-  /* Task 7: gallery sound notification */
+  
   const $toast = $('<div class="action-toast" role="status" aria-live="polite"></div>').hide().appendTo('body');
 
   $('.gallery-container').on('click', '.gallery-item', function (event) {
@@ -10,7 +10,7 @@ $(function () {
     $toast.stop(true, true).text('Sound played!').fadeIn(200).delay(1800).fadeOut(500);
   });
 
-  /* Task 8: copy FAQ answers with a confirmation tooltip */
+  
   $('.faq-copy').on('click', async function () {
     const $button = $(this);
     const text = $button.siblings('p').text().trim();
@@ -34,7 +34,7 @@ $(function () {
     }, 2000));
   });
 
-  /* Task 9: load the hero image when it approaches the viewport */
+  
   function loadVisibleImages() {
     const viewportBottom = $(window).scrollTop() + $(window).height() + 150;
     $('.lazy-image[data-src]').each(function () {
